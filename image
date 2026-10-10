@@ -1,0 +1,18 @@
+import time
+import usb_hid
+from adafruit_hid.keyboard import Keyboard
+from adafruit_hid.keycode import Keycode
+from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
+
+kbd = Keyboard(usb_hid.devices)
+layout = KeyboardLayoutUS(kbd)
+
+time.sleep(2)
+
+# Ouvrir la fenêtre Exécuter
+kbd.send(Keycode.GUI, Keycode.R)
+time.sleep(0.5)
+
+# Saisir le chemin de l'image et l'ouvrir
+ecrire_azerty("place of the image on the memory of the RP2040 chip")
+kbd.send(Keycode.ENTER)
